@@ -4,21 +4,21 @@ import Select, { GroupBase, OptionProps, components } from 'react-select';
 import { JSX, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
-const CustomOption = (props: JSX.IntrinsicAttributes & OptionProps<unknown, boolean, GroupBase<unknown>>) => {
-  const data = props.data as { label: string, image: string, email: string };
+const CustomOption = (props) => {
+
   return (
     <components.Option {...props}>
    <div style={{ display: 'flex', alignItems: 'center' }}>
         <Image 
-          src={(props.data as { image: string }).image} // Path to the image, which should be a property in your options object
+          src={props.data.image} // Path to the image, which should be a property in your options object
           alt="Profile"
           width={24} // Adjust the size as needed
           height={24}
           style={{ borderRadius: '50%', marginRight: '10px' }} // Make the image rounded and add margin
         />
         <div>
-          <div>{(props.data as { label: string }).label}</div> {/* This is where the name will go */}
-          <div style={{ fontSize: 'smaller' }}>{data.email}</div> {/* This is where the email will go */}
+          <div>{(props.label)}</div> {/* This is where the name will go */}
+          <div style={{ fontSize: 'smaller' }}>{props.data.email}</div> {/* This is where the email will go */}
         </div>
       </div>
     </components.Option>
@@ -48,6 +48,7 @@ export default function Home() {
         defaultValue={selectedOption}
         placeholder="Select your value"
         // onChange={setSelectedOption}
+        
         components={{ Option: CustomOption}}
         isMulti
         isSearchable
