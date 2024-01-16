@@ -47,7 +47,7 @@ export default function Home() {
         className="w-1/2"
         defaultValue={selectedOption}
         placeholder="Select your value"
-        onChange={setSelectedOption}
+        // onChange={setSelectedOption}
         components={{ Option: CustomOption}}
         isMulti
         isSearchable
